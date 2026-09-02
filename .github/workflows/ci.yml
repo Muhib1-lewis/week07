@@ -108,6 +108,13 @@ jobs:
     name: Test frontend
     runs-on: ubuntu-latest
 
+     env:
+      VITE_USER_SERVICE_URL: http://localhost:8001
+      VITE_STUDENT_SERVICE_URL: http://localhost:8002
+      VITE_LECTURER_SERVICE_URL: http://localhost:8003
+      VITE_COURSE_SERVICE_URL: http://localhost:8004
+      VITE_ENROLLMENT_SERVICE_URL: http://localhost:8005
+
     steps:
 
       - name: Checkout repository
@@ -133,7 +140,7 @@ jobs:
   build-and-push:
     name: Build and Push ${{ matrix.image }}
     runs-on: ubuntu-latest
-
+  
     # All tests must pass before this job starts
     needs:
       - backend-test
